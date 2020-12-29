@@ -57,7 +57,7 @@ std::future<typename std::result_of<FUNC(PARAMS...)>::type > GYS::CLthreadPool::
         this->m_mt.lock();
 
         this->m_task.emplace(
-            [ptr]()->void{
+            [ptr]()->void{  //千万别传&ptr
                 (*ptr)();
             }
         );
