@@ -22,7 +22,9 @@ int main(){
             )
         );
     }
-
+    
+    
+    //下面使用了s.get() 如果对cout加锁可能造成死锁
     for(auto &s : v_int) std::cout << s.get() << std::endl;
 
     system("pause");
