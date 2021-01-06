@@ -49,7 +49,7 @@ std::future<typename std::result_of<FUNC(PARAMS...)>::type > GYS::CLthreadPool::
 
     auto f = std::bind(std::move(func), std::move(params)...);    //绑定函数和其参数
 
-    auto ptr = std::make_shared< std::packaged_task<task_return_type()> > (move(f));
+    auto ptr = std::make_shared< std::packaged_task<task_return_type()> > (move(f)); //打包任务，模板参数为可调用对象。 f返回值（f参数）
 
     if(this->m_stop.load(std::memory_order_acquire)) throw std::runtime_error("gysThreadPool has stopped!!!");  // 线程池已经关闭，不要继续加任务了
 
